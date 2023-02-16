@@ -1,4 +1,4 @@
-package com.example.gridview
+package com.example.gridview.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,10 +8,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gridview.model.ListFlag
+import com.example.gridview.view.MainActivity
+import com.example.gridview.R
 
 
-
-class GridViewAdapter(private val context: Context, private val list: List<ListFlag>, private val main:MainActivity):RecyclerView.Adapter<GridViewAdapter.ViewHolder>(){
+class GridViewAdapter(private val context: Context, private val list: List<ListFlag>, private val main: MainActivity):RecyclerView.Adapter<GridViewAdapter.ViewHolder>(){
 
     private var selection:Int = -1
 
@@ -25,7 +27,7 @@ class GridViewAdapter(private val context: Context, private val list: List<ListF
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        var itemView = LayoutInflater.from(context.applicationContext)
+        val itemView = LayoutInflater.from(context.applicationContext)
             .inflate(R.layout.itemgrid, parent, false)
         return ViewHolder(itemView)
     }
@@ -55,7 +57,7 @@ class GridViewAdapter(private val context: Context, private val list: List<ListF
     }
 
     private fun customActions(position: Int) {
-        var title = main.findViewById<TextView>(R.id.textViewTitle)
+        val title = main.findViewById<TextView>(R.id.textViewTitle)
 
         when(position){
             0,2 ->{

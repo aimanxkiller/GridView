@@ -1,10 +1,12 @@
-package com.example.gridview
+package com.example.gridview.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gridview.R
+import com.example.gridview.adapter.GridViewAdapter
+import com.example.gridview.model.ListFlag
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,7 +15,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var title:TextView = findViewById(R.id.textViewTitle)
 
         val recyclerView =findViewById<RecyclerView>(R.id.recyclerGrid)
         recyclerView.setHasFixedSize(true)
@@ -21,13 +22,13 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = layoutManager
 
         list = listOf(
-            ListFlag("Malaysia",R.drawable.flag_malaysia),
-            ListFlag("Canada",R.drawable.flag_canada),
-            ListFlag("China",R.drawable.flag_china),
-            ListFlag("Brazil",R.drawable.flag_brazil)
+            ListFlag("Malaysia", R.drawable.flag_malaysia),
+            ListFlag("Canada", R.drawable.flag_canada),
+            ListFlag("China", R.drawable.flag_china),
+            ListFlag("Brazil", R.drawable.flag_brazil)
         )
 
-        setGridView(recyclerView,list);
+        setGridView(recyclerView,list)
 
     }
 

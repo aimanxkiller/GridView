@@ -1,4 +1,4 @@
-package com.example.gridview
+package com.example.gridview.model
 
 
 data class ListFlag(
