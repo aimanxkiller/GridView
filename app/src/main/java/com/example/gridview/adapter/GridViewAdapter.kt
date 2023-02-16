@@ -6,14 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gridview.model.ListFlag
-import com.example.gridview.view.MainActivity
 import com.example.gridview.R
+import com.example.gridview.model.ListFlag
+import com.example.gridview.view.AdapterListener
 
 
-class GridViewAdapter(private val context: Context, private val list: List<ListFlag>, private val main: MainActivity):RecyclerView.Adapter<GridViewAdapter.ViewHolder>(){
+class GridViewAdapter(private val context: Context, private val list: List<ListFlag>, private val listener: AdapterListener):RecyclerView.Adapter<GridViewAdapter.ViewHolder>(){
 
     private var selection:Int = -1
 
@@ -40,7 +39,9 @@ class GridViewAdapter(private val context: Context, private val list: List<ListF
 
         holder.itemView.setOnClickListener {
             updateSelection(position)
-            customActions(position)
+
+            //listener communicate to activity
+            listener.onClicked(position)
         }
     }
 
@@ -56,25 +57,7 @@ class GridViewAdapter(private val context: Context, private val list: List<ListF
         }
     }
 
-    private fun customActions(position: Int) {
-        val title = main.findViewById<TextView>(R.id.textViewTitle)
 
-        when(position){
-            0,2 ->{
-                Toast.makeText(context,"This is ${position+1}",Toast.LENGTH_SHORT).show()
-                title.visibility = View.VISIBLE
-                title.text = list[position].name
-            }
-            1 -> {
-                title.visibility = View.GONE
-                Toast.makeText(context, "This is ${position + 1}", Toast.LENGTH_SHORT).show()
-            }
-            3 -> {
-                Toast.makeText(context, "This is ${position + 1}", Toast.LENGTH_SHORT).show()
-                title.visibility = View.INVISIBLE
-            }
-        }
-    }
 
     private fun updateSelection(position: Int) {
         val previousItemIndex = selection

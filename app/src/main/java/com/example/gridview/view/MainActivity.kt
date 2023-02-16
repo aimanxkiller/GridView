@@ -1,6 +1,9 @@
 package com.example.gridview.view
 
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -8,7 +11,7 @@ import com.example.gridview.R
 import com.example.gridview.adapter.GridViewAdapter
 import com.example.gridview.model.ListFlag
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),AdapterListener {
 
     private lateinit var list:List<ListFlag>
 
@@ -36,6 +39,26 @@ class MainActivity : AppCompatActivity() {
         val myAdapter = GridViewAdapter(this,list,this)
 
         recyclerView.adapter = myAdapter
+    }
+
+    override fun onClicked(position: Int) {
+        val title = findViewById<TextView>(R.id.textViewTitle)
+
+        when(position){
+            0,2 ->{
+                Toast.makeText(this,"This is ${position+1}", Toast.LENGTH_SHORT).show()
+                title.visibility = View.VISIBLE
+                title.text = list[position].name
+            }
+            1 -> {
+                title.visibility = View.GONE
+                Toast.makeText(this, "This is ${position + 1}", Toast.LENGTH_SHORT).show()
+            }
+            3 -> {
+                Toast.makeText(this, "This is ${position + 1}", Toast.LENGTH_SHORT).show()
+                title.visibility = View.INVISIBLE
+            }
+        }
     }
 
 
