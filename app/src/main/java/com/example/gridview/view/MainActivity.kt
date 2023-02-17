@@ -37,13 +37,11 @@ class MainActivity : AppCompatActivity(),AdapterListener {
 
     private fun setGridView(recyclerView: RecyclerView, list: List<ListFlag>) {
         val myAdapter = GridViewAdapter(this,list,this)
-
         recyclerView.adapter = myAdapter
     }
 
     override fun onClicked(position: Int) {
         val title = findViewById<TextView>(R.id.textViewTitle)
-
         when(position){
             0,2 ->{
                 Toast.makeText(this,"This is ${position+1}", Toast.LENGTH_SHORT).show()
@@ -60,6 +58,5 @@ class MainActivity : AppCompatActivity(),AdapterListener {
             }
         }
     }
-
 
 }

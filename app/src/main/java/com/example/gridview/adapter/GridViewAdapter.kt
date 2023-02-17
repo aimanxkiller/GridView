@@ -57,8 +57,6 @@ class GridViewAdapter(private val context: Context, private val list: List<ListF
         }
     }
 
-
-
     private fun updateSelection(position: Int) {
         val previousItemIndex = selection
         selection = position
